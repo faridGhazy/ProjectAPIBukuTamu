@@ -1,0 +1,234 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<!-- Main Content -->
+<div id="content">
+
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 mt-2 text-gray-800" style="text-align:center">Program Buku Tamu</h1>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 ">
+                <h6 class="m-0 font-weight-bold text-primary">Daftar Hadir Tamu</h6>
+            </div>
+            <div class="card-body">
+
+                <!-- Modal Detail-->
+                <div class="modal fade" id="ModalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Data Tamu</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="nama2">Nama</label>
+                                        <input type="text" class="form-control" id="nama2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="nohp2">Ponsel</label>
+                                        <input type="text" class="form-control" id="nohp2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email2">Email</label>
+                                        <input type="email" class="form-control" id="email2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="alamat2">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="province2">Provinsi</label>
+                                        <input type="text" class="form-control" id="province2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="kotabupaten2">Kota/Kabupaten</label>
+                                        <input type="text" class="form-control" id="kotabupaten2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="kecamatan2">Kecamatan</label>
+                                        <input type="text" class="form-control" id="kecamatan2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="kelurahan2">Kelurahan</label>
+                                        <input type="text" class="form-control" id="kelurahan2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="kodepos2">Kode Pos</label>
+                                        <input type="text" class="form-control" id="kodepos2" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="checkIn2">Date</label>
+                                        <input type="text" class="form-control" id="checkIn2" readonly>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button trigger modal -->
+                <button id="addbutton" onclick="selectProvinsi()" class="btn btn-primary mb-3" data-toggle="modal" data-target="#BTModal">
+                    Tambah Data Tamu
+                </button>
+
+                <!-- Button Export Excel -->
+                <!-- Modal -->
+                <div class="modal fade" id="BTModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ModalLabel">Data Tamu</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="idTamu" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="checkIn" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" id="update" placeholder="" readonly="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="nama">Nama</label>
+                                        <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="nohp">Ponsel</label>
+                                        <input type="text" class="form-control" id="nohp" placeholder="Masukkan Nomer Handphoe">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Masukkan Email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="alamat">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="province">Provinsi</label>
+                                        <select id="province" class="form-control">
+                                            <option value="" disabled selected>Pilih Provinsi</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="kotabupaten">Kota/Kabupaten</label>
+                                        <select id="kotabupaten" class="form-control">
+                                            <option value="" disabled selected>Pilih Kota/Kabupaten</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="kecamatan">Kecamatan</label>
+                                        <select id="kecamatan" class="form-control">
+                                            <option value="" disabled selected>Pilih Kecamatan</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="kelurahan">Kelurahan</label>
+                                        <select id="kelurahan" class="form-control">
+                                            <option value="" disabled selected>Pilih Kelurahan</option>
+                                        </select>
+                                    </div>
+
+@*                                    <div class="form-group">
+                                        <label for="kodepos">Kode Pos</label>
+                                        <
+                                        <select id="kodepos" class="form-control">
+                                            <option value="" disabled selected>Pilih Kode Pos</option>
+                                        </select>
+                                    </div>*@
+
+                                    <div class="form-group">
+                                        <label for="kodepos">Kode Pos</label>
+                                        <input type="text" class="form-control" id="kodepos" placeholder="Kode Pos">
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="buttonSubmit" type="button" class="btn btn-success" onclick="Save();">Save</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tbTamu" width="100%" cellspacing="0">
+                        <thead style="text-align:center">
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Ponsel</th>
+                                <th>Email</th>
+@*                                <th>Alamat</th>
+                                <th>Provinsi</th>
+                                <th>Kota/Kaupaten</th>
+                                <th>Kecamatan</th>
+                                <th>Kelurahan</th>
+                                <th>Kode Pos</th>*@
+                                <th>Waktu</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+
+                    </table>
+                </div>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+@section Scripts{
+    <script src="~/js/BukuTamuScript.js"></script>
+    <!--Sweet Alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Font Awesom-->
+    <script src="https://use.fontawesome.com/41da98a55d.js"></script>
+}
+
+
